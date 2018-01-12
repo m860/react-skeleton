@@ -1,7 +1,14 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types'
 
+/**
+ * Skeleton
+ * */
 export default class Skeleton extends PureComponent {
+	/**
+	 * @property {func} renderSkeleton - 自定义skeleton
+	 * @property {any} children
+	 * */
 	static propTypes = {
 		children: PropTypes.any,
 		renderSkeleton: PropTypes.func

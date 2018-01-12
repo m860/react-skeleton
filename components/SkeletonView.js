@@ -25,6 +25,26 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * SkeletonView : Skeleton容器
+ *
+ * @example <caption>simple usage</caption>
+ *
+ * <SkeletonView show={true}>
+ *     <Skeleton>
+ *         <span>title</span>
+ *     </Skeleton>
+ * </SkeletonView>
+ *
+ * @example <caption>custom skeleton</caption>
+ *
+ * <SkeletonView show={true}>
+ *     <Skeleton renderSkeleton={()=>(<p style={{backgroundColor:"silver"}}>placeholder</p>)}>
+ *         <span>title</span>
+ *     </Skeleton>
+ * </SkeletonView>
+ *
+ * */
 var SkeletonView = (_temp = _class = function (_PureComponent) {
 	_inherits(SkeletonView, _PureComponent);
 
@@ -41,6 +61,11 @@ var SkeletonView = (_temp = _class = function (_PureComponent) {
 				showSkeleton: this.props.show
 			};
 		}
+		/**
+   * @property {bool} show [false] - 是否显示skeleton
+   * @property {any} children
+   * */
+
 	}, {
 		key: "render",
 		value: function render() {
