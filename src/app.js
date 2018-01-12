@@ -8,29 +8,17 @@ import PropTypes from 'prop-types'
 
 class Test extends PureComponent {
 	static propTypes = {
-		title: PropTypes.string
+		title: PropTypes.string,
+		show: PropTypes.bool
 	};
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			show: true
-		};
-	}
 
 	render() {
 		return (
-			<SkeletonView show={this.state.show}>
-				<div>
+			<SkeletonView show={this.props.show}>
+				<div style={{backgroundColor:"#eaebed",padding:10}}>
 					<Skeleton>
 						<span className="test">{this.props.title}</span>
 					</Skeleton>
-					<button type="button" onClick={() => {
-						this.setState({
-							show: !this.state.show
-						})
-					}}>toggle skeleton
-					</button>
 				</div>
 			</SkeletonView>
 		);
@@ -38,10 +26,32 @@ class Test extends PureComponent {
 }
 
 class App extends PureComponent {
+	constructor(props) {
+		super(props);
+		this.state = {
+			show: false,
+			title: "hello world!"
+		};
+	}
+
 	render() {
 		return (
 			<div>
-				<Test title="Hello"/>
+				<button type="button" onClick={() => {
+					this.setState(Object.assign({}, {
+						show: true,
+						title:"-------------------"
+					}), () => {
+						setTimeout(() => {
+							this.setState(Object.assign({}, {
+								show: false,
+								title:'hello world!'
+							}))
+						}, 2000)
+					})
+				}}>fetch data
+				</button>
+				<Test title={this.state.title} show={this.state.show}/>
 			</div>
 		);
 	}
